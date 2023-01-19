@@ -17,6 +17,6 @@ public class CategoryController {
   public String getCategoriesList(Model model) {
     List<Category> allCategories = categoryService.findAll();
     model.addAttribute("categories_list", allCategories);
-    return "categories-list.html";
+    return "categories-box.html";
   }
 }
