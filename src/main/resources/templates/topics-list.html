@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <title>Interview</title>
 </head>
 <body>
-здесь будет главная таблица
+<div th:switch="${topics_list}">
+  <h2 th:case="null">No topics found!</h2>
+  <div th:case="*">
+    <h2>Вопросы категории</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>
+          <a>id</a>
+        </th>
+        <th>
+          <a>Вопрос</a>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="topic : ${topics_list}">
+        <td th:text="${topic.id}"></td>
+        <td th:text="${topic.question}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <p  style="text-align: center"><a href="/topic/create">Добавить вопрос</a></p>
+  <p  style="text-align: center"><a href="/">Назад</a></p>
+</div>
 </body>
 </html>

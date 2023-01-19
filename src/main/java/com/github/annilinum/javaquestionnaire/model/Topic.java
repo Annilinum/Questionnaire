@@ -28,13 +28,10 @@ public class Topic {
   @Column(name = "passed")
   private boolean isPassed;
 
-  @Column(name = "category_id")
-  private long categoryIg;
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "category_id")
+  private Category category;
 
   @Column(name = "next_id")
   private long nextIg;
-
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name="category_id")
-  private Category category;
 }
