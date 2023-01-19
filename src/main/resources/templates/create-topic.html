@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Create topic</title>
+</head>
+<body>
+<form action="#" th:action="@{/topic/create}" th:object="${topic}" method="post">
+  <label for="question">Question</label>
+  <input type="text" th:field="*{question}" id="question" placeholder="Здесь ввести вопрос">
+  <label for="answer">Answer</label>
+  <input type="text" th:field="*{answer}" id="answer" placeholder="Здесь будет ответ">
+  <input type="submit" value="Create Topic">
+</form>
+</body>
+</html>
