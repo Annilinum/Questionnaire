@@ -12,8 +12,15 @@ import org.springframework.stereotype.Service;
 public class CategoryService {
   private CategoryRepository categoryRepository;
 
+  public Category findById(long category_id) {
+    return categoryRepository.getReferenceById(category_id);
+  }
+
   public List<Category> findAll() {
     return categoryRepository.findAll();
   }
 
+  public List<Topic> getTopicsListByCategoryId(long category_id) {
+    return findById(category_id).getTopics();
+  }
 }
