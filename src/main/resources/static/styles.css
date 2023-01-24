@@ -1,5 +1,6 @@
 html {
-  font-family: sans-serif;
+  font-family: serif;
+  text-align: center;
 }
 
 body {
@@ -9,12 +10,14 @@ body {
 header {
   height: 100px;
 }
-h1{
+
+h1 {
   text-align: center;
   color: #000000;
   line-height: 100px;
   margin: 0;
 }
+
 h2 {
   text-align: center;
   color: #000000;
@@ -23,26 +26,46 @@ h2 {
 }
 
 article {
+  color: black;
+  font-size: 23px;
+  font-weight: 600;
   display: flex;
-  padding: 10px;
-  margin: 10px;
+  flex-wrap: wrap;
+  margin: 15px;
   background: #c9976c;
   flex: 130px;
   height: 140px;
+  width: 140px;
   justify-content: space-around;
+  border-radius: 5px;
+  box-shadow: 2px 2px #28211a94;
+  place-items: center;
 }
 
-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+article:hover{
+  background-color: #deb491;
 }
-.flex-container{
-  margin: auto;
-  background-color: bisque;
+article:active {
+  background-color: rgba(200, 150, 108, 0.64) !important;
+}
+
+.section {
   display: flex;
-  width: 800px;
-  height: 500px;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+}
+
+.flex-container {
+  display: flex;
+  margin: auto;
+  background-color: rgba(255, 228, 196, 0.8);
+  box-shadow: 1px 1px 3px #777;
+/*  width: 800px;*/
+  /*height: 500px;*/
   justify-content: center;
+}
+
+.category-btn{
+  color: black;
+  text-decoration: none;
 }

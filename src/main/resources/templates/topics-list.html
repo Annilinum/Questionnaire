@@ -9,8 +9,7 @@
   <h2 th:case="null">No topics found!</h2>
   <div th:case="*">
     <h2>Вопросы категории</h2>
-    <div>id</div>
-    <div>Вопрос</div>
+    <div>Где-то здесь будет поисковая строка</div>
     <div th:each="topic : ${topics_list}">
       <p th:text="${topic.id}"></p>
       <a th:href="@{topics}" th:text="${topic.question}"></a>
