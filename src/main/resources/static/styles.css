@@ -69,3 +69,48 @@ article:active {
   color: black;
   text-decoration: none;
 }
+.div-question{
+  display: flex;
+  justify-content: center;
+  height: 60px;
+}
+.input-question{
+  width: 450px;
+  text-align: center;
+  font-size: 18px;
+}
+.div-answer{
+  margin: 20px;
+}
+.input-answer{
+  height: 300px;
+  width: 450px;
+  text-align: center;
+  font-size: 16px;
+}
+.btn {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0 20px;
+  margin: 0 15px 15px 0;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  background-color: #e7f3ff;
+  user-select: none;
+  appearance: none;
+  touch-action: manipulation;
+}
+.btn:focus-visible {
+  box-shadow: 0 0 0 2px #666;
+}
+.btn:hover {
+  background-color: #DBE7F2;
+}
+.btn:active {
+  transform: scale(0.96);}

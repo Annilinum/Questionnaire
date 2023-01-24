@@ -7,17 +7,25 @@
 </head>
 <body>
 <h2>Создать новый вопрос</h2>
+
 <form action="#" th:action="@{/topic/create}" th:object="${topic}" method="post">
-  <label for="question">Question</label>
-  <input type="text" th:field="*{question}" id="question" placeholder="Введите текст вопроса">
-  <label for="answer">Answer</label>
-  <input type="text" th:field="*{answer}" id="answer" placeholder="Здесь будет развернутый ответ">
-  <button>Добавить изображение</button>
+  <div>
+    <div class="div-question">
+      <input class="input-question" type="text" th:field="*{question}" id="question" placeholder="Введите текст вопроса">
+    </div>
+    <div class="div-answer">
+      <input class="input-answer" type="text" th:field="*{answer}" id="answer" placeholder="Здесь будет развернутый ответ">
+    </div>
+  </div>
+  <button class="btn">Добавить изображение</button>
+  <div>
+  <p class="btn"><a href="/">Назад</a></p>
   <p>
-  <input type="submit" value="Создать вопрос">
+    <input class="btn" type="submit" value="Создать вопрос">
   </p>
+  </div>
 </form>
 
-<p  style="text-align: center"><a href="/">Назад</a></p>
+
 </body>
 </html>
