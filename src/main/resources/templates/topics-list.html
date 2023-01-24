@@ -9,27 +9,15 @@
   <h2 th:case="null">No topics found!</h2>
   <div th:case="*">
     <h2>Вопросы категории</h2>
-    <table>
-      <thead>
-      <tr>
-        <th>
-          <a>id</a>
-        </th>
-        <th>
-          <a>Вопрос</a>
-        </th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="topic : ${topics_list}">
-        <td th:text="${topic.id}"></td>
-        <td th:text="${topic.question}"></td>
-      </tr>
-      </tbody>
-    </table>
+    <div>id</div>
+    <div>Вопрос</div>
+    <div th:each="topic : ${topics_list}">
+      <p th:text="${topic.id}"></p>
+      <a th:href="@{topics}" th:text="${topic.question}"></a>
+    </div>
   </div>
-  <p  style="text-align: center"><a href="/topic/create">Добавить вопрос</a></p>
-  <p  style="text-align: center"><a href="/">Назад</a></p>
+  <p style="text-align: center"><a href="/topic/create">Добавить вопрос</a></p>
+  <p style="text-align: center"><a href="/">Назад</a></p>
 </div>
 </body>
 </html>
