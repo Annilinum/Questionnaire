@@ -60,8 +60,8 @@ article:active {
   margin: auto;
   background-color: rgba(255, 228, 196, 0.8);
   box-shadow: 1px 1px 3px #777;
-/*  width: 800px;*/
-  /*height: 500px;*/
+ width: 800px;
+  height: 500px;
   justify-content: center;
 }
 

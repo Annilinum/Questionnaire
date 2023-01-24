@@ -14,7 +14,6 @@
 <div class="flex-container" th:switch="${categories_list}">
   <h2 th:case="null">No topics found!</h2>
   <div class="section" th:case="*">
-
     <article th:each="category : ${categories_list}">
         <a class="category-btn" th:href="@{category/{category_id}/topics(category_id=${category.id})}" th:text="${category.name}"></a>
     </article>

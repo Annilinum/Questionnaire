@@ -11,7 +11,7 @@
     <h2>Вопросы категории</h2>
     <div>Где-то здесь будет поисковая строка</div>
     <div th:each="topic : ${topics_list}">
-      <p th:text="${topic.id}"></p>
+      <span th:text="${topicStat.index+1}"></span>
       <a th:href="@{topics}" th:text="${topic.question}"></a>
     </div>
   </div>
