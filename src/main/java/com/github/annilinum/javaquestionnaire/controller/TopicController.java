@@ -40,8 +40,10 @@ public class TopicController {
   }
 
   @GetMapping("topic/{topicId}/update")
-  public String updateTopicForm(@PathVariable("topicId") long topicId){
+  public String updateTopicForm(@PathVariable("topicId") long topicId, Model model){
    //сборка в html?
+    Topic topic = topicService.findById(topicId);
+    model.addAttribute("topic", topic);
     return "update-topic.html";
   }
   @PostMapping("topic/update")
