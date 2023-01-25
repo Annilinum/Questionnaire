@@ -12,7 +12,7 @@
     <div>Где-то здесь будет поисковая строка</div>
     <div th:each="topic : ${topics_list}">
       <span th:text="${topicStat.index+1}"></span>
-      <a th:href="@{topics}" th:text="${topic.question}"></a>
+      <a th:href="@{/topic/{topic_id}/answer(topic_id=${topic.id})}" target="_blank" th:text="${topic.question}"></a>
     </div>
   </div>
   <p style="text-align: center"><a href="/topic/create">Добавить вопрос</a></p>

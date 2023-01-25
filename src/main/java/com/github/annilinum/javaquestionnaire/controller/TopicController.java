@@ -1,5 +1,6 @@
 package com.github.annilinum.javaquestionnaire.controller;
 
+import com.github.annilinum.javaquestionnaire.model.Category;
 import com.github.annilinum.javaquestionnaire.model.Topic;
 import com.github.annilinum.javaquestionnaire.service.TopicService;
 import java.util.List;
@@ -32,20 +33,29 @@ public class TopicController {
     topicService.saveTopic(topic);
     return "redirect:/";
   }
-  @GetMapping("/topic/{topicId}/delete")
+  @GetMapping("topic/{topicId}/delete")
   public String deleteTopic(@PathVariable("topicId") long topicId){
     topicService.deleteById(topicId);
     return "redirect:/";
   }
 
-  @GetMapping("/topic/{topicId}/update")
+  @GetMapping("topic/{topicId}/update")
   public String updateTopicForm(@PathVariable("topicId") long topicId){
    //сборка в html?
     return "update-topic.html";
   }
-  @PostMapping("/topic/update")
+  @PostMapping("topic/update")
   public String updateTopic(Topic topic){
     topicService.saveTopic(topic);
     return "redirect:/";
+  }
+  @GetMapping("topic/{topic_id}/answer")
+  public String getAnswer(@PathVariable ("topic_id") long topicId, Model model) {
+    String answer = topicService.findById(topicId).getAnswer();
+    model.addAttribute("answer", answer);
+    String question = topicService.findById(topicId).getQuestion();
+    model.addAttribute("question", question);
+    model.addAttribute("topic_id", topicId);
+    return "answer.html";
   }
 }

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <title>Answer</title>
-  <link type="text/css" rel="stylesheet" th:href="@{/materialize.min.css}" media="screen,projection">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
-
+<div th:text="${question}"></div>
+<div th:text="${answer}"></div>
+<button class="btn" ><a th:href="@{/topic/{topic_id}/update(topic_id=${topic_id})}">Редактировать</a></button>
+<button class="btn">Отметить</button>
+<button class="btn"><a th:href="@{/topic/{topic_id}/delete(topic_id=${topic_id})}">Удалить</a></button>
 </body>
 </html>

@@ -1,13 +1,12 @@
 package com.github.annilinum.javaquestionnaire.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.annilinum.javaquestionnaire.model.Category;
 import com.github.annilinum.javaquestionnaire.service.CategoryService;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 import lombok.AllArgsConstructor;
-import lombok.SneakyThrows;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class CategoryController {
   private CategoryService categoryService;
 
-  @SneakyThrows @GetMapping("/")
+  @GetMapping("/")
   public String getCategoriesList(Model model) {
     List<Category> allCategories = categoryService.findAll();
     model.addAttribute("categories_list", allCategories);
@@ -37,7 +36,7 @@ public class CategoryController {
     }
     d = d + "}";*/
 
-    var mm = Map.of(
+   /* var mm = Map.of(
         "Apple", "https://i1.sndcdn.com/artworks-000412607283-nrgtef-t240x240.jpg",
         "Google", "https://i1.sndcdn.com/artworks-000412607283-nrgtef-t240x240.jpg",
         "Alphine", "https://i1.sndcdn.com/artworks-000412607283-nrgtef-t240x240.jpg",
@@ -45,7 +44,7 @@ public class CategoryController {
         "Galia", "https://i1.sndcdn.com/artworks-000412607283-nrgtef-t240x240.jpg"
     );
     String json = new ObjectMapper().writeValueAsString(mm);
-    model.addAttribute("categories_data", json);
+    model.addAttribute("categories_data", json);*/
 
     return "categories-list.html";
   }
