@@ -33,31 +33,39 @@ public class TopicController {
     topicService.saveTopic(topic);
     return "redirect:/";
   }
+
   @GetMapping("topic/{topicId}/delete")
-  public String deleteTopic(@PathVariable("topicId") long topicId){
+  public String deleteTopic(@PathVariable("topicId") long topicId) {
     topicService.deleteById(topicId);
     return "redirect:/";
   }
 
   @GetMapping("topic/{topicId}/update")
-  public String updateTopicForm(@PathVariable("topicId") long topicId, Model model){
-   //сборка в html?
+  public String updateTopicForm(@PathVariable("topicId") long topicId, Model model) {
     Topic topic = topicService.findById(topicId);
     model.addAttribute("topic", topic);
     return "update-topic.html";
   }
+
   @PostMapping("topic/update")
-  public String updateTopic(Topic topic){
+  public String updateTopic(Topic topic) {
     topicService.saveTopic(topic);
     return "redirect:/";
   }
+
   @GetMapping("topic/{topic_id}/answer")
-  public String getAnswer(@PathVariable ("topic_id") long topicId, Model model) {
+  public String getAnswer(@PathVariable("topic_id") long topicId, Model model) {
     String answer = topicService.findById(topicId).getAnswer();
     model.addAttribute("answer", answer);
     String question = topicService.findById(topicId).getQuestion();
     model.addAttribute("question", question);
     model.addAttribute("topic_id", topicId);
     return "answer.html";
+  }
+
+  @GetMapping("topic/{topic_id}/passed")
+  public String setPassed(@PathVariable("topic_id") long topicId) {
+    topicService.setPassed(topicId);
+    return "redirect:/topic/{topic_id}/answer";
   }
 }

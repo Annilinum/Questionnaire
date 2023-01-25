@@ -29,4 +29,9 @@ public class TopicService {
   public void deleteById(long topicId) {
     topicRepository.deleteById(topicId);
   }
+  public void setPassed(long topicId) {
+    Topic topic = findById(topicId);
+    topic.setPassed(true);
+    topicRepository.save(topic);
+  }
 }
