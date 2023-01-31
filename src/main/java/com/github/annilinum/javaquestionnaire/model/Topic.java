@@ -33,5 +33,5 @@ public class Topic {
   private Category category;
 
   @Column(name = "next_id")
-  private long nextIg;
+  private Long nextId;
 }

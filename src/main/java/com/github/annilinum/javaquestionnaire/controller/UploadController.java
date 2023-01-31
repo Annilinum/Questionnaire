@@ -22,7 +22,9 @@ public class UploadController {
     Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, file.getOriginalFilename());
     fileNames.append(file.getOriginalFilename());
     Files.write(fileNameAndPath, file.getBytes());
+
+
     model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
-    return "redirect:/topic/create";
+    return  "create-topic.html";
   }
 }
