@@ -68,4 +68,5 @@ public class TopicController {
     topicService.setPassed(topicId);
     return "redirect:/topic/{topic_id}/answer";
   }
+
 }

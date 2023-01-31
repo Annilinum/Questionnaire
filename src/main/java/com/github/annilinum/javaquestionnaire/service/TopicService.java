@@ -31,7 +31,8 @@ public class TopicService {
   }
   public void setPassed(long topicId) {
     Topic topic = findById(topicId);
-    topic.setPassed(true);
+    boolean passed = !topic.isPassed();
+    topic.setPassed(passed);
     topicRepository.save(topic);
   }
 }

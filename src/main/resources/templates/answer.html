@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Answer</title>
+  <link rel="stylesheet" th:href="@{/styles.css}">
 
 </head>
 <body>
+
 <div th:text="${question}"></div>
 <div th:text="${answer}"></div>
 <button class="btn" ><a th:href="@{/topic/{topic_id}/update(topic_id=${topic_id})}">Редактировать</a></button>

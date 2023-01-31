@@ -11,18 +11,24 @@
 <form action="#" th:action="@{/topic/create}" th:object="${topic}" method="post">
   <div>
     <div class="div-question">
-      <input class="input-question" type="text" th:field="*{question}" id="question" placeholder="Введите текст вопроса">
+      <input class="input-question" type="text" th:field="*{question}" id="question"
+             placeholder="Введите текст вопроса">
     </div>
     <div class="div-answer">
-      <input class="input-answer" type="text" th:field="*{answer}" id="answer" placeholder="Здесь будет развернутый ответ">
+      <input class="input-answer" type="text" th:field="*{answer}" id="answer"
+             placeholder="Здесь будет развернутый ответ">
     </div>
   </div>
-  <button class="btn">Добавить изображение</button>
-  <div>
-  <span class="btn"><a href="/">Назад</a></span>
-    <span style="width: 100px; display: inline-block"></span>
-    <input class="btn" type="submit" value="Создать вопрос">
-  </div>
 </form>
+<form method="post" th:action="@{/upload}" enctype="multipart/form-data">
+  <input type="file" name="image" accept="image/*">
+  <button class="btn" type="submit">Добавить изображение</button>
+</form>
+<div>
+  <span class="btn"><a href="/">Назад</a></span>
+  <span style="width: 100px; display: inline-block"></span>
+  <input class="btn" type="submit" value="Создать вопрос">
+</div>
+
 </body>
 </html>
