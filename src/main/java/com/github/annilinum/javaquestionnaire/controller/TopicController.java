@@ -1,7 +1,7 @@
 package com.github.annilinum.javaquestionnaire.controller;
 
-import com.github.annilinum.javaquestionnaire.model.Category;
 import com.github.annilinum.javaquestionnaire.model.Topic;
+import com.github.annilinum.javaquestionnaire.service.ImageService;
 import com.github.annilinum.javaquestionnaire.service.TopicService;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @AllArgsConstructor
 public class TopicController {
   private TopicService topicService;
+  private ImageService imageService;
 
   @GetMapping("/topics")
   public String getTopicsList(Model model) {
@@ -25,49 +26,56 @@ public class TopicController {
   }
 
   @GetMapping("/category/{category_id}/topic/create")
-  public String createTopicForm(@PathVariable("category_id") long category_id, Topic topic) {
+  public String createTopicForm(@PathVariable("category_id") long categoryId, Topic topic) {
     return "create-topic.html";
   }
 
   @PostMapping("/category/{category_id}/topic/create")
-  public String createTopic(@PathVariable("category_id") long category_id, @ModelAttribute(name = "topic") CreateTopicRequest topic) {
-    topicService.createNewTopic(category_id, topic.getQuestion(), topic.getAnswer());
-    return "redirect:/";
+  public String createTopic(@PathVariable("category_id") long categoryId,
+      @ModelAttribute(name = "topic") CreateTopicRequest topic) {
+    String path = imageService.saveImage(topic.getImage());
+    topicService.createNewTopic(categoryId, topic.getQuestion(), topic.getAnswer(), path);
+    return "redirect:/category/" + categoryId + "/topics";
   }
 
-  @GetMapping("topic/{topicId}/delete")
-  public String deleteTopic(@PathVariable("topicId") long topicId) {
+  @GetMapping("/category/{category_id}/topic/{topic_id}/delete")
+  public String deleteTopic(@PathVariable("category_id") long categoryId, @PathVariable("topic_id") long topicId,
+      Model model) {
+    model.addAttribute("topic_id", topicId);
     topicService.deleteById(topicId);
-    return "redirect:/";
+    return "redirect:/category/" + categoryId + "/topics";
   }
 
-  @GetMapping("topic/{topicId}/update")
-  public String updateTopicForm(@PathVariable("topicId") long topicId, Model model) {
+  @GetMapping("/category/{category_id}/topic/{topicId}/update")
+  public String updateTopicForm(@PathVariable("category_id") long categoryId, @PathVariable("topicId") long topicId,
+      Model model) {
     Topic topic = topicService.findById(topicId);
     model.addAttribute("topic", topic);
+    model.addAttribute("category_id", categoryId);
     return "update-topic.html";
   }
 
-  @PostMapping("topic/update")
-  public String updateTopic(Topic topic) {
+  @PostMapping("/category/{category_id}/topic/update")
+  public String updateTopic(@PathVariable("category_id") long categoryId, Topic topic) {
     topicService.saveTopic(topic);
-    return "redirect:/";
+    return "redirect:/category/" + categoryId + "/topics";
   }
 
-  @GetMapping("topic/{topic_id}/answer")
-  public String getAnswer(@PathVariable("topic_id") long topicId, Model model) {
+  @GetMapping("/category/{category_id}/topic/{topic_id}/answer")
+  public String getAnswer(@PathVariable("topic_id") long topicId, @PathVariable("category_id") Long categoryId,
+      Model model) {
     String answer = topicService.findById(topicId).getAnswer();
     model.addAttribute("answer", answer);
     String question = topicService.findById(topicId).getQuestion();
     model.addAttribute("question", question);
     model.addAttribute("topic_id", topicId);
+    model.addAttribute("category_id", categoryId);
     return "answer.html";
   }
 
-  @GetMapping("topic/{topic_id}/passed")
+  @GetMapping("/topic/{topic_id}/passed")
   public String setPassed(@PathVariable("topic_id") long topicId) {
     topicService.setPassed(topicId);
     return "redirect:/topic/{topic_id}/answer";
   }
-
 }

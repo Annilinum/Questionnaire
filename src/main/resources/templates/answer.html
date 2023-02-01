@@ -10,8 +10,8 @@
 
 <div th:text="${question}"></div>
 <div th:text="${answer}"></div>
-<button class="btn" ><a th:href="@{/topic/{topic_id}/update(topic_id=${topic_id})}">Редактировать</a></button>
+<button class="btn" ><a th:href="@{/category/{category_id}/topic/{topic_id}/update(category_id=${category_id},topic_id=${topic_id})}">Редактировать</a></button>
 <button class="btn"><a th:href="@{/topic/{topic_id}/passed(topic_id=${topic_id})}">Отметить</a></button>
-<button class="btn"><a th:href="@{/topic/{topic_id}/delete(topic_id=${topic_id})}">Удалить</a></button>
+<button class="btn"><a th:href="@{/category/{category_id}/topic/{topic_id}/delete(category_id=${category_id},topic_id=${topic_id})}">Удалить</a></button>
 </body>
 </html>

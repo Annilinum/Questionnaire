@@ -42,11 +42,12 @@ public class TopicService {
     topicRepository.save(topic);
   }
 
-  public void createNewTopic(long category_id, String question, String answer) {
+  public void createNewTopic(long category_id, String question, String answer, String image) {
     Topic topic = new Topic();
     topic.setQuestion(question);
     topic.setAnswer(answer);
     topic.setCategory(categoryRepository.getReferenceById(category_id));
+    topic.setImage(image);
     saveTopic(topic);
   }
 }

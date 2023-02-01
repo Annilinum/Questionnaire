@@ -23,7 +23,7 @@ public class UploadController {
     fileNames.append(file.getOriginalFilename());
     Files.write(fileNameAndPath, file.getBytes());
 
-
+    fileNameAndPath.toString();
     model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
     return  "create-topic.html";
   }

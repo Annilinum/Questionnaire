@@ -25,6 +25,9 @@ public class Topic {
   @Column(name = "answer")
   private String answer;
 
+  @Column(name="image")
+  private String image;
+
   @Column(name = "passed")
   private boolean isPassed;
 

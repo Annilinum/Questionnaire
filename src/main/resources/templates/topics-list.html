@@ -13,10 +13,10 @@
     <div>Где-то здесь будет поисковая строка</div>
     <div th:each="topic : ${topics_list}">
       <span th:text="${topicStat.index+1}"></span>
-      <a th:href="@{/topic/{topic_id}/answer(topic_id=${topic.id})}" target="_blank" th:text="${topic.question}"></a>
+      <a th:href="@{/category/{category_id}/topic/{topic_id}/answer(category_id=${category_id},topic_id=${topic.id})}" target="_blank" th:text="${topic.question}"></a>
     </div>
   </div>
-  <p class="btn"><a th:href="@{/category/{category_id}/topic/create(category_id=${category_id})}">Добавить вопрос</a></p>
+  <p class="btn"><a th:href="@{topic/create}">Добавить вопрос</a></p>
   <p class="btn"><a href="/">Назад</a></p>
 </div>
 </body>
