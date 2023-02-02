@@ -119,3 +119,13 @@ article:active {
   visibility: visible;
   cursor: pointer;
   opacity: 1.0;}
+
+
+.passed{
+  background-color: rgba(72, 103, 57, 0.32);
+
+}
+.nopassed{
+  background-color: rgba(136, 14, 79, 0.23);
+
+}

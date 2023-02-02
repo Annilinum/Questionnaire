@@ -67,12 +67,14 @@ public class TopicController {
     model.addAttribute("question", question);
     model.addAttribute("topic_id", topicId);
     model.addAttribute("category_id", categoryId);
+    boolean isPassed = topicService.findById(topicId).isPassed();
+    model.addAttribute("isPassed", isPassed);
     return "answer.html";
   }
 
-  @GetMapping("/topic/{topic_id}/passed")
-  public String setPassed(@PathVariable("topic_id") long topicId) {
+  @GetMapping("/category/{category_id}/topic/{topic_id}/passed")
+  public String setPassed(@PathVariable("category_id") long categoryId, @PathVariable("topic_id") long topicId) {
     topicService.setPassed(topicId);
-    return "redirect:/topic/{topic_id}/answer";
+    return "redirect:/category/" + categoryId + "/topic/" + topicId + "/answer";
   }
 }
