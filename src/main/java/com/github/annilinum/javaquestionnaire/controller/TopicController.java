@@ -44,8 +44,12 @@ public class TopicController {
   @PostMapping("/category/{category_id}/topic/save")
   public String saveTopic(@PathVariable("category_id") long categoryId,
       @ModelAttribute(name = "topic") TopicRequest topic) {
-    String path = topic.getImage() != null ? imageService.saveImage(topic.getImage())
-        : topicRepository.getReferenceById(topic.getId()).getImage();
+    String path = null;
+    if (!topic.getImage().isEmpty()) {
+      path = imageService.saveImage(topic.getImage());
+    } else if (topic.getId() != null) {
+      path = topicRepository.getReferenceById(topic.getId()).getImage();
+    }
     topicService.saveTopic(categoryId, topic.getId(), topic.getQuestion(), topic.getAnswer(), path);
     return "redirect:/category/" + categoryId + "/topics";
   }

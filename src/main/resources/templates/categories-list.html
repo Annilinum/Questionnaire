@@ -18,13 +18,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" th:src="@{/materialize.min.js}"></script>
 
-<div><h2>Категория</h2></div>
-<div class="flex-container" th:switch="${categories_list}">
-  <h2 th:case="null">No topics found!</h2>
-  <div class="section" th:case="*">
-    <article th:each="category : ${categories_list}">
-        <a class="category-btn" th:href="@{category/{category_id}/topics(category_id=${category.id})}" th:text="${category.name}"></a>
-    </article>
+<div class="container">
+  <h2>Категория</h2>
+  <div th:switch="${categories_list}">
+    <h2 th:case="null">No topics found!</h2>
+    <div class="category-container" th:case="*">
+      <article th:each="category : ${categories_list}">
+        <a class="category-btn" th:href="@{category/{category_id}/topics(category_id=${category.id})}"
+           th:text="${category.name}"></a>
+      </article>
+    </div>
   </div>
 </div>
 </body>

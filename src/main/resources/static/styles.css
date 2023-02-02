@@ -31,15 +31,17 @@ article {
   font-weight: 600;
   display: flex;
   flex-wrap: wrap;
-  margin: 15px;
-  background: #c9976c;
-  flex: 130px;
-  height: 140px;
-  width: 140px;
-  justify-content: space-around;
+  margin: 10px;
+  background: #c9976cd1;
+  flex: 115px;
+  height: 100px;
+  width: max-content;
   border-radius: 5px;
   box-shadow: 2px 2px #28211a94;
   place-items: center;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
 }
 
 article:hover{
@@ -49,20 +51,10 @@ article:active {
   background-color: rgba(200, 150, 108, 0.64) !important;
 }
 
-.section {
+.category-container {
   display: flex;
   flex-wrap: wrap;
   align-content: space-evenly;
-}
-
-.flex-container {
-  display: flex;
-  margin: auto;
-  background-color: rgba(255, 228, 196, 0.8);
-  box-shadow: 1px 1px 3px #777;
- width: 800px;
-  height: 500px;
-  justify-content: center;
 }
 
 .category-btn{
