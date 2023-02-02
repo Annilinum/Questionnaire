@@ -15,7 +15,6 @@
 </header>
 <body>
 <h2>Редактировать вопрос</h2>
-<div th:text="${topic.id}"></div>
 <form action="#" th:action="@{/category/{category_id}/topic/save(category_id=${category_id})}" th:object="${topic}" method="post">
   <div>
     <div>

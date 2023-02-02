@@ -187,3 +187,22 @@ header h1::before {
   margin: 15px 0px 15px 0px;
 
 }
+.question-form{
+  font-size: 20px;
+  display: inline-flex;
+  width: 60%;
+  flex-direction: row;
+  height: 40px;
+  margin: 20px 0px 0 0px;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid;
+}
+.answer-form{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 95%;
+  font-size: 17px;
+  margin: 15px 0px 15px 0px;
+}

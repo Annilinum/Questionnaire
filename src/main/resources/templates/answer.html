@@ -15,9 +15,12 @@
   </nav>
 </header>
 <body>
-
-<div style="display: flex" class="passed" th:class="${isPassed} ? passed : nopassed " th:text="${question}"></div>
-<div th:text="${answer}"></div>
+<div class="container">
+  <div class="question-form">
+    <div style="display: flex" class="passed" th:class="${isPassed} ? passed : nopassed " th:text="${question}"></div>
+  </div>
+  <div class="answer-form" th:text="${answer}"></div>
+</div>
 <button class="btn"><a
     th:href="@{/category/{category_id}/topic/{topic_id}/update(category_id=${category_id},topic_id=${topic_id})}">Редактировать</a>
 </button>
