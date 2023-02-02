@@ -15,6 +15,9 @@ import static com.github.annilinum.javaquestionnaire.controller.UploadController
 public class ImageService {
 
   @SneakyThrows public String saveImage(MultipartFile image) {
+    if (image == null) {
+      return null;
+    }
     Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, image.getOriginalFilename());
     Files.write(fileNameAndPath, image.getBytes());
     return fileNameAndPath.toString();

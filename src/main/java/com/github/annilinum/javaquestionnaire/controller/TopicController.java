@@ -1,6 +1,7 @@
 package com.github.annilinum.javaquestionnaire.controller;
 
 import com.github.annilinum.javaquestionnaire.model.Topic;
+import com.github.annilinum.javaquestionnaire.repository.TopicRepository;
 import com.github.annilinum.javaquestionnaire.service.ImageService;
 import com.github.annilinum.javaquestionnaire.service.TopicService;
 import java.util.List;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class TopicController {
   private TopicService topicService;
   private ImageService imageService;
+  private TopicRepository topicRepository;
 
   @GetMapping("/topics")
   public String getTopicsList(Model model) {
@@ -30,11 +32,21 @@ public class TopicController {
     return "create-topic.html";
   }
 
-  @PostMapping("/category/{category_id}/topic/create")
-  public String createTopic(@PathVariable("category_id") long categoryId,
-      @ModelAttribute(name = "topic") CreateTopicRequest topic) {
-    String path = imageService.saveImage(topic.getImage());
-    topicService.createNewTopic(categoryId, topic.getQuestion(), topic.getAnswer(), path);
+  @GetMapping("/category/{category_id}/topic/{topic_id}/update")
+  public String updateTopicForm(@PathVariable("category_id") long categoryId, @PathVariable("topic_id") long topicId,
+      Model model) {
+    Topic topic = topicService.findById(topicId);
+    model.addAttribute("topic", topic);
+    model.addAttribute("category_id", categoryId);
+    return "update-topic.html";
+  }
+
+  @PostMapping("/category/{category_id}/topic/save")
+  public String saveTopic(@PathVariable("category_id") long categoryId,
+      @ModelAttribute(name = "topic") TopicRequest topic) {
+    String path = topic.getImage() != null ? imageService.saveImage(topic.getImage())
+        : topicRepository.getReferenceById(topic.getId()).getImage();
+    topicService.saveTopic(categoryId, topic.getId(), topic.getQuestion(), topic.getAnswer(), path);
     return "redirect:/category/" + categoryId + "/topics";
   }
 
@@ -43,21 +55,6 @@ public class TopicController {
       Model model) {
     model.addAttribute("topic_id", topicId);
     topicService.deleteById(topicId);
-    return "redirect:/category/" + categoryId + "/topics";
-  }
-
-  @GetMapping("/category/{category_id}/topic/{topicId}/update")
-  public String updateTopicForm(@PathVariable("category_id") long categoryId, @PathVariable("topicId") long topicId,
-      Model model) {
-    Topic topic = topicService.findById(topicId);
-    model.addAttribute("topic", topic);
-    model.addAttribute("category_id", categoryId);
-    return "update-topic.html";
-  }
-
-  @PostMapping("/category/{category_id}/topic/update")
-  public String updateTopic(@PathVariable("category_id") long categoryId, Topic topic) {
-    topicService.saveTopic(topic);
     return "redirect:/category/" + categoryId + "/topics";
   }
 

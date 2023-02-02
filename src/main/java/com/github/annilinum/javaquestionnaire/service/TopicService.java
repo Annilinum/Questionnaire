@@ -1,15 +1,11 @@
 package com.github.annilinum.javaquestionnaire.service;
 
-import com.github.annilinum.javaquestionnaire.controller.CreateTopicRequest;
-import com.github.annilinum.javaquestionnaire.model.Category;
 import com.github.annilinum.javaquestionnaire.model.Topic;
 import com.github.annilinum.javaquestionnaire.repository.CategoryRepository;
 import com.github.annilinum.javaquestionnaire.repository.TopicRepository;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 @AllArgsConstructor
@@ -42,8 +38,8 @@ public class TopicService {
     topicRepository.save(topic);
   }
 
-  public void createNewTopic(long category_id, String question, String answer, String image) {
-    Topic topic = new Topic();
+  public void saveTopic(long category_id, Long topicId,  String question, String answer, String image) {
+    Topic topic = topicId == null ? new Topic() : topicRepository.getReferenceById(topicId);
     topic.setQuestion(question);
     topic.setAnswer(answer);
     topic.setCategory(categoryRepository.getReferenceById(category_id));
