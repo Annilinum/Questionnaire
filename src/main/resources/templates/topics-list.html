@@ -5,18 +5,19 @@
   <title>Interview</title>
   <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
+<header>
+  <h1>Questionnaire</h1>
+  <nav>
+    <a>Ссылка</a>
+    <a>Ссылка</a>
+    <a>Ссылка</a>
+  </nav>
+</header>
 <body>
 <div th:switch="${topics_list}">
   <h2 th:case="null">No topics found!</h2>
   <div th:case="*">
-    <header>
-      <h1>Questionnaire</h1>
-      <nav>
-        <a>Ссылка</a>
-        <a>Ссылка</a>
-        <a>Ссылка</a>
-      </nav>
-    </header>
+
     <div class="container">
       <h2>Вопросы категории</h2>
       <div class="search-line">Где-то здесь будет поисковая строка</div>

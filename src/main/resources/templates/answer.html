@@ -6,12 +6,26 @@
   <link rel="stylesheet" th:href="@{/styles.css}">
 
 </head>
+<header>
+  <h1>Questionnaire</h1>
+  <nav>
+    <a>Ссылка</a>
+    <a>Ссылка</a>
+    <a>Ссылка</a>
+  </nav>
+</header>
 <body>
 
-<div style="display: flex" class ="passed" th:class="${isPassed} ? passed : nopassed " th:text="${question}"></div>
+<div style="display: flex" class="passed" th:class="${isPassed} ? passed : nopassed " th:text="${question}"></div>
 <div th:text="${answer}"></div>
-<button class="btn" ><a th:href="@{/category/{category_id}/topic/{topic_id}/update(category_id=${category_id},topic_id=${topic_id})}">Редактировать</a></button>
-<button class="btn"><a th:href="@{/category/{category_id}/topic/{topic_id}/passed(category_id=${category_id},topic_id=${topic_id})}">Отметить</a></button>
-<button class="btn"><a th:href="@{/category/{category_id}/topic/{topic_id}/delete(category_id=${category_id},topic_id=${topic_id})}">Удалить</a></button>
+<button class="btn"><a
+    th:href="@{/category/{category_id}/topic/{topic_id}/update(category_id=${category_id},topic_id=${topic_id})}">Редактировать</a>
+</button>
+<button class="btn"><a
+    th:href="@{/category/{category_id}/topic/{topic_id}/passed(category_id=${category_id},topic_id=${topic_id})}">Отметить</a>
+</button>
+<button class="btn"><a
+    th:href="@{/category/{category_id}/topic/{topic_id}/delete(category_id=${category_id},topic_id=${topic_id})}">Удалить</a>
+</button>
 </body>
 </html>
