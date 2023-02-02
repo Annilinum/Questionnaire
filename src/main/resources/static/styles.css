@@ -14,7 +14,6 @@ header {
 h1 {
   text-align: center;
   color: #000000;
-  line-height: 100px;
   margin: 0;
 }
 
@@ -23,6 +22,7 @@ h2 {
   color: #000000;
   line-height: 100px;
   margin: 0;
+  font-size: 30px;
 }
 
 article {
@@ -131,4 +131,59 @@ article:active {
 }
 .icon{
   width: 15px;
+}
+
+header{
+  background: antiquewhite;
+  text-align: justify;
+  letter-spacing: 1px;
+  height: 20px;
+  padding: 2em 10%;
+  color: black;
+}
+header h1,
+header nav{
+  display: inline-block;
+}
+header::after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
+
+header h1 {
+  height: 100%;
+}
+
+header h1::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+.container{
+  width: 60%;
+  border: 1px solid;
+  margin: 5px 0px 10px 150px;
+}
+.search-line{
+  display: inline-flex;
+  background: bisque;
+  width: 60%;
+  flex-direction: row;
+  height: 40px;
+  margin: 0px 0px 0px 0px;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid;
+}
+.questions-container{
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 60%;
+  font-size: 17px;
+  margin: 15px 0px 15px 0px;
+
 }

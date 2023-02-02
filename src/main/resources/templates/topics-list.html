@@ -9,17 +9,33 @@
 <div th:switch="${topics_list}">
   <h2 th:case="null">No topics found!</h2>
   <div th:case="*">
-    <h2>Вопросы категории</h2>
-    <div>Где-то здесь будет поисковая строка</div>
-    <div th:each="topic : ${topics_list}">
-      <img th:if="${topic.isPassed}" class="icon" th:src="@{/green.png}" alt="alt">
-      <img th:if="${topic.isPassed == false}" class="icon" th:src="@{/brown.png}" alt="alt">
-      <span th:text="${topicStat.index+1}"></span>
-      <a th:href="@{/category/{category_id}/topic/{topic_id}/answer(category_id=${category_id},topic_id=${topic.id})}" target="_blank" th:text="${topic.question}"></a>
+    <header>
+      <h1>Questionnaire</h1>
+      <nav>
+        <a>Ссылка</a>
+        <a>Ссылка</a>
+        <a>Ссылка</a>
+      </nav>
+    </header>
+    <div class="container">
+      <h2>Вопросы категории</h2>
+      <div class="search-line">Где-то здесь будет поисковая строка</div>
+      <div class="questions-container">
+        <div th:each="topic : ${topics_list}">
+          <img th:if="${topic.isPassed}" class="icon" th:src="@{/green.png}" alt="alt">
+          <img th:if="${topic.isPassed == false}" class="icon" th:src="@{/brown.png}" alt="alt">
+          <span th:text="${topicStat.index+1}"></span>
+          <a th:href="@{/category/{category_id}/topic/{topic_id}/answer(category_id=${category_id},topic_id=${topic.id})}"
+             target="_blank" th:text="${topic.question}"></a>
+        </div>
+      </div>
     </div>
+    <p class="btn"><a href="/">На главную</a></p>
+    <span></span>
+    <p class="btn"><a th:href="@{/category/{category_id}/topic/create(category_id=${category_id})}">Добавить вопрос</a>
+    </p>
+
   </div>
-  <p class="btn"><a th:href="@{/category/{category_id}/topic/create(category_id=${category_id})}">Добавить вопрос</a></p>
-  <p class="btn"><a href="/">На главную</a></p>
 </div>
 </body>
 </html>
