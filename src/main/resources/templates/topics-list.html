@@ -12,7 +12,8 @@
     <h2>Вопросы категории</h2>
     <div>Где-то здесь будет поисковая строка</div>
     <div th:each="topic : ${topics_list}">
-      <img th:if="${topic.isPassed}" class="icon" th:src="@{/1.jpg}" alt="alt">
+      <img th:if="${topic.isPassed}" class="icon" th:src="@{/green.png}" alt="alt">
+      <img th:if="${topic.isPassed == false}" class="icon" th:src="@{/brown.png}" alt="alt">
       <span th:text="${topicStat.index+1}"></span>
       <a th:href="@{/category/{category_id}/topic/{topic_id}/answer(category_id=${category_id},topic_id=${topic.id})}" target="_blank" th:text="${topic.question}"></a>
     </div>
