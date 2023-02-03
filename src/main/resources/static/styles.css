@@ -81,6 +81,7 @@ article:active {
   font-size: 16px;
 }
 .btn {
+  font-family: serif;
   display: inline-block;
   box-sizing: border-box;
   padding: 0 20px;
@@ -126,7 +127,7 @@ article:active {
 }
 
 header{
-  background: antiquewhite;
+  background: #c9976c;
   text-align: justify;
   letter-spacing: 1px;
   height: 20px;
@@ -197,4 +198,35 @@ header h1::before {
   width: 95%;
   font-size: 17px;
   margin: 15px 0px 15px 0px;
+}
+.input-file-text {
+  padding: 0 10px;
+  line-height: 40px;
+  display: inline-block;
+}
+.input-file input[type=file] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+/* Focus */
+.input-file input[type=file]:focus + .input-file-btn {
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+/* Hover/active */
+.input-file:hover .input-file-btn {
+  background-color: #59be6e;
+}
+.input-file:active .input-file-btn {
+  background-color: #2E703A;
+}
+a{
+  text-decoration: none;
+  color: black;
+  font-family: serif;
 }

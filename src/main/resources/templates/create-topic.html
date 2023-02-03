@@ -16,24 +16,32 @@
 <body>
 <h2>Создать новый вопрос</h2>
 
-<form action="#" th:action="@{/category/{category_id}/topic/save(category_id=${category_id})}" th:object="${topic}" method="post" enctype="multipart/form-data">
+<form action="#" th:action="@{/category/{category_id}/topic/save(category_id=${category_id})}" th:object="${topic}"
+      method="post" enctype="multipart/form-data">
   <div>
     <div class="div-question">
       <input class="input-question" type="text" th:field="*{question}" id="question"
              placeholder="Введите текст вопроса">
-    </div> <input type="file" name="image" accept="image/*">
+    </div>
     <div class="div-answer">
       <input class="input-answer" type="text" th:field="*{answer}" id="answer"
              placeholder="Здесь будет развернутый ответ">
     </div>
+    <form method="post" enctype="multipart/form-data">
+      <label class="input-file">
+        <input type="file" name="image" accept="image/*">
+        <span class="btn">Добавить изображение</span>
+        <span class="input-file-text"></span>
+      </label>
+    </form>
   </div>
 
 
-<div>
-  <span class="btn"><a href="/">Назад</a></span>
-  <span style="width: 100px; display: inline-block"></span>
-  <input class="btn" type="submit" value="Создать вопрос">
-</div>
+  <div>
+    <span class="btn"><a href="/">Назад</a></span>
+    <span style="width: 100px; display: inline-block"></span>
+    <input class="btn" type="submit" value="Создать вопрос">
+  </div>
 </form>
 </body>
 </html>

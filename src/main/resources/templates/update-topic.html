@@ -15,21 +15,29 @@
 </header>
 <body>
 <h2>Редактировать вопрос</h2>
-<form action="#" th:action="@{/category/{category_id}/topic/save(category_id=${category_id})}" th:object="${topic}" method="post">
+<form action="#" th:action="@{/category/{category_id}/topic/save(category_id=${category_id})}" th:object="${topic}"
+      method="post">
   <div>
     <div>
       <input type="hidden" th:field="*{id}" value="${topic.id}">
     </div>
     <div class="div-question">
-      <input class="input-question" type="text" th:field="*{question}" id="question" placeholder="Введите текст вопроса">
+      <input class="input-question" type="text" th:field="*{question}" id="question"
+             placeholder="Введите текст вопроса">
     </div>
     <div class="div-answer">
       <input class="input-answer" type="text" th:field="*{answer}" id="answer" placeholder="Введите ответ">
     </div>
   </div>
-  <button class="btn">Добавить изображение</button>
+ <!-- <form method="post" enctype="multipart/form-data">
+    <label class="input-file">
+      <input type="file" name="image" accept="image/*">
+      <span class="btn">Добавить изображение</span>
+      <span class="input-file-text"></span>
+    </label>
+  </form>-->
   <div>
-  <span class="btn"><a href="/">Назад</a></span>
+    <span class="btn"><a href="/">Назад</a></span>
     <span style="width: 100px; display: inline-block"></span>
     <input class="btn" type="submit" value="Сохранить изменения">
   </div>
